@@ -124,7 +124,7 @@ open FlickerImageApp.xcodeproj
 ---
 
 ## 📸 Demo
-[![Watch the demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://streamable.com/kjjgfe)
+[![Watch the demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://drive.google.com/file/d/1RxM1xREAI5kA6Uw0ddFbr1K6vMqrZLDM/view?usp=drive_link)
 
 ---
 
