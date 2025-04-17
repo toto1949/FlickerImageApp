@@ -1,88 +1,139 @@
-# CVS Flickr APP
-
-A SwiftUI-based iOS application that allows users to search and view images from Flickr's public feed.
-
-## Features
-
-- **Real-time image search** using Flickr's public feed API
-- **Grid layout** displaying thumbnail images
-- **Image detail view** with metadata
-- **Progress indicator** during searches
-- **Continuous search updates** on each keystroke
-- **Supports comma-separated search tags** (e.g., "soccer, food, programming")
-
-## Technical Requirements
-
-- **iOS** (latest version)
-- **Swift**
-- **SwiftUI**
-- **Xcode** (latest version)
-
-## API
-
-The app uses Flickr's public feed API:  
-[https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags={searchTerm}
-](https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags={searchTerm})
-
-- No API key required.
-
-## Core Functionality
-
-### Search View
-
-- **Search bar** for entering search terms
-  - Users can enter **single words** (e.g., "soccer") or **comma-separated tags** (e.g., "soccer, food, programming")
-- **Grid layout** for displaying image thumbnails
-- **Non-blocking progress indicator** during searches
-- **Continuous search updates** after each keystroke or change to the search string
-
-### Detail View
-
-- Full-size **image display**
-- **Title**
-- **Description**
-- **Author information**
-- **Formatted publication date**
-
-## Demo
-
-### Watch Full Demo Video
 
 
-[![Watch the demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://streamable.com/kjjgfe)
+#  Flickr Image Search App
 
-## Testing
-
-- Includes **unit tests** covering core functionality.
-
-## Development Guidelines
-
-- Written in **Swift** using **SwiftUI**
-- Follows **Apple's Human Interface Guidelines**
-- Implements **proper error handling**
-- Ensures **thread safety** for API calls
-- Maintains **memory management best practices**
-- Uses **clean coding practices** and consistent formatting
-
-## Getting Started
-
-1. **Clone the repository**
-2. **Open the project in Xcode**
-3. **Build and run** on simulator or device
-
-## Time Allocation
-
-Project is designed to be completed within **3 hours**.
-
-## About
-
-This project is a simple image search application that leverages the Flickr API for fetching images. It is part of an iOS Developer Candidate Code Challenge.
-
-
-### Languages
-
-- **Swift**: 100%
+A SwiftUI-based iOS application that allows users to search and view public images from Flickr using tags. Built with Combine, async/await, and MVVM architecture.
 
 ---
 
-© 2025 GitHub, Inc.
+## ✨ Features
+
+- 🔍 Real-time image search using Flickr’s public feed API
+- 🖼 Grid layout showing thumbnail images
+- 📄 Detailed view with image metadata
+- ⏳ Non-blocking loading indicator during searches
+- ⌨️ Real-time updates using Combine’s `debounce`
+- 🧠 Handles multi-tag (comma-separated) searches
+- ♻️ Deduplicates images across multiple tag results
+- 🧭 Loads default images when search field is empty
+- 📤 Image sharing from detail view
+- 🧑‍🦯 Accessibility with VoiceOver and Dynamic Type
+- 🔁 Smooth animated transition from grid to detail view
+
+---
+
+## 🧪 Technical Stack
+
+- **Language**: Swift 5.9+
+- **UI**: SwiftUI
+- **Architecture**: MVVM
+- **Concurrency**: async/await
+- **Reactive Programming**: Combine
+- **Tested on**: iOS 17 (Xcode 15+)
+
+
+## 🔗 API
+
+Public Flickr Feed API (no key required):
+
+```
+https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags={searchTerm}
+```
+
+- Accepts single or comma-separated tags
+- Returns public image feed in JSON format
+
+---
+
+## 🧭 Core Functionality
+
+### 🔍 Search View
+
+- Built with `@Published` and Combine
+- `debounce(for: .milliseconds(400))` to avoid excessive API calls
+- Displays a grid of thumbnails
+- Automatically loads default images on empty input
+- Calls appropriate search based on single or multiple tags
+
+### 🖼 Detail View
+
+- Full-size image display
+- Image title
+- Author name
+- Clean HTML-parsed description
+- Formatted publish date (localized)
+- Image dimensions (parsed from HTML)
+- Share button for image + metadata
+- Animated image transition
+
+---
+
+## 🧪 Tests
+
+- Basic unit test covers image fetching logic using dependency-injected mock `NetworkManaging`.
+- Designed for easy testability and expansion.
+
+---
+
+## 🚀 Getting Started
+
+1. **Clone the repo:**
+
+```bash
+git clone https://github.com/toto1949/FlickerImageApp.git
+cd FlickerImageApp.git
+```
+
+2. **Open in Xcode:**
+
+```bash
+open FlickerImageApp.xcodeproj
+```
+
+3. **Build and Run:**
+   - Run on iOS Simulator or real device (iOS 17+)
+
+---
+
+## ✅ Extra Credit Implemented
+
+- [x] Dynamic Type
+- [x] VoiceOver labels
+- [x] UI transition animation
+- [x] Image dimensions in detail
+- [x] Image sharing
+- [x] Unit tests
+- [x] Graceful error handling
+
+---
+
+## 💡 Design Considerations
+
+- Combine for reactive search
+- Swift concurrency for async-safe API calls
+- Avoids retain cycles with `[weak self]`
+- Fully non-blocking UI
+- Clean separation of concerns (MVVM)
+
+---
+
+## ⏱ Time Allocation
+
+> The app was developed in under **3 hours** as per the coding challenge guidelines. Extra features were prioritized over boilerplate to maximize value within the time constraint.
+
+---
+
+## 📸 Demo
+[![Watch the demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://streamable.com/kjjgfe)
+
+---
+
+## 👤 Author
+
+**Taoufiq El Moutaouakil**  
+Senior iOS Developer  
+[LinkedIn](https://www.linkedin.com/in/taoufiq-el-moutaouakil-746374228/) • [Portfolio](https://www.taoufiqelmoutaouakil.info.s3-website-us-east-1.amazonaws.com/)
+
+
+
+
